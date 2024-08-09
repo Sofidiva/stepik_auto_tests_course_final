@@ -6,3 +6,12 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, '#login_form')
     REGISTER_FORM = (By.CSS_SELECTOR, '#register_form')
+
+class ProductPageLocators():
+    ADD_TO_BASKET = (By.CSS_SELECTOR, '.btn-add-to-basket')
+    PRICE_ON_CARD = (By.CSS_SELECTOR, '.product_main .price_color')
+    NAME_ON_CARD = (By.CSS_SELECTOR, '.product_main h1')
+    PRICE_IN_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(3) > .alertinner strong')
+    NAME_IN_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(1) > .alertinner strong')
+    MESSAGE_ADD_TO_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(1) > .alertinner')
+
