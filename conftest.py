@@ -10,9 +10,12 @@ def pytest_addoption(parser):
                      help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default="en",
                      help="Choose language: '--language=en' or '--language=ru' or '--language=es'")
+    parser.addoption('--headless', action='store', default='true',
+                     help="Open a browser invisible, without GUI is used by default")
 
 @pytest.fixture(scope="function")
 def browser(request):
+
     browser_name = request.config.getoption("browser_name")
     user_language = request.config.getoption("language")
 
@@ -23,17 +26,17 @@ def browser(request):
     options_ff = FirefoxProfile()
     options_ff.set_preference("intl.accept_languages", user_language)
     options_ff.binary_location = r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
-
+    headless = request.config.getoption('headless')
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
+        if headless == 'true':
+            options.add_argument('headless')
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         browser = webdriver.Firefox(options=options_ff)
-        # browser = webdriver.Firefox(executable_path=r'C:\FirefoxDriver\geckodriver.exe')
-        # browser = webdriver.Firefox(firefox_profile=fp)
-        #browser = webdriver.Firefox(firefoxOptions=options_ff)
+
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
