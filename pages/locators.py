@@ -14,4 +14,3 @@ class ProductPageLocators():
     PRICE_IN_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(3) > .alertinner strong')
     NAME_IN_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(1) > .alertinner strong')
     MESSAGE_ADD_TO_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(1) > .alertinner')
-
