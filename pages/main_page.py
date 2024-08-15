@@ -4,11 +4,9 @@ from .login_page import LoginPage
 #from selenium.webdriver.common.by import By
 
 class MainPage(BasePage):
-    def go_to_login_page(self):
-        login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK) # символ * указывает на то, что мы передали именно пару, и этот кортеж нужно распаковать.
-        login_link.click()
-        '''alert = self.browser.switch_to.alert
-        alert.accept()'''
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)
 
-    def should_be_login_link(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
+'''метод __init__ вызывается при создании объекта. 
+Конструктор выше с ключевым словом super на самом деле только вызывает конструктор класса предка и 
+передает ему все те аргументы, которые мы передали в конструктор MainPage. '''
