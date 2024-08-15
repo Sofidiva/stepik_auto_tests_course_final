@@ -19,6 +19,10 @@ class BasePage():
         '''alert = self.browser.switch_to.alert
         alert.accept()'''
 
+    def go_to_basket_page(self):
+        view_basket = self.browser.find_element(*BasePageLocators.VIEW_BASKET)
+        view_basket.click()
+
     def open(self):
         self.browser.get(self.url)
 
